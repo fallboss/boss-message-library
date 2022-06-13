@@ -1,0 +1,16 @@
+include:
+  - project: 'falabella-retail/txd/boss/devops/template-gitlab-ci/template-gitlab-ci-go-libraries'
+    ref: master
+    file: '.gitlab-ci-template.yml'
+
+variables:
+  # REQUIREMENTS FOR STEPS TO PRODUCTION
+  TAG: "v.1.0.0" #
+  TITLE: '-----'
+  CRQ: "----" #CRQ associated with development
+  JIRA_HISTORY: "----"
+  TYPE_DEVELOPMENT: "CORR" # PROY, CONT, CORR, EVO, SOP
+  COUNTRY: "ALL" # CL, AR, CO, PE, ALL
+  NAME_REQUIREMENT: ''
+  DESCRIPTION: ''
+
