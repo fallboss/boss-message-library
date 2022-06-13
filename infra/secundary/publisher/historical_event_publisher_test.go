@@ -32,7 +32,7 @@ func TestNotifyOrderStatusEvent(t *testing.T) {
 			publisher = func(t *pubsub.Topic, s interface{}, attributes map[string]string) error {
 				return nil
 			}
-			err := rs.Publish(tt.args.event)
+			err := rs.Publish(tt.args.event, "", "", "")
 			if nil != err {
 				t.Errorf("error when try to notify AuditOrder")
 				return
