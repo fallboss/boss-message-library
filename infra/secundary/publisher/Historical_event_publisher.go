@@ -12,11 +12,17 @@ type HistoricalEventPublisher struct {
 	topic *pubsub.Topic
 }
 
-func (p *HistoricalEventPublisher) Publish(historicalEvent *event.HistoricalEvent) error {
+const (
+	EntityType = "history"
+	EventType  = "historyUpdated"
+)
+
+func (p *HistoricalEventPublisher) Publish(historicalEvent *event.HistoricalEvent, country string, sourceSystem string, tenantId string) error {
 
 	var attributes = make(map[string]string)
-	attributes["country"] = "CL"
-	attributes["sourceSystem"] = "ANDES"
+	attributes["country"] = country
+	attributes["sourceSystem"] = sourceSystem
+	attributes["tenantId"] = tenantId
 	attributes["version"] = "1.0"
 	CompleteHeader(attributes, EventType, EntityType)
 
@@ -31,8 +37,3 @@ func NewHistoricalEventPublisher() *HistoricalEventPublisher {
 		topic: BuildTopic(pid, tid),
 	}
 }
-
-const (
-	EntityType = "history"
-	EventType  = "historyUpdated"
-)

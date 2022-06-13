@@ -21,8 +21,7 @@ type PublisherProp struct {
 }
 
 type Publisher struct {
-	OrderStatus PubInfo `yaml:"order-status"`
-	AuditOrder  PubInfo `yaml:"audit-order"`
+	OrderStatus PubInfo `yaml:"historical-event"`
 }
 
 type PubInfo struct {
