@@ -4,7 +4,7 @@ import (
 	"cloud.google.com/go/pubsub"
 	"context"
 	"encoding/json"
-	"falabella.com/boss-message-library/infra/secundary/config/log"
+	"falabella.com/boss-message-library/internal/config/log"
 	"fmt"
 	"sync"
 )

@@ -1,8 +1,8 @@
-package publisher
+package falabella_boss_message_go_library
 
 import (
 	"cloud.google.com/go/pubsub"
-	"falabella.com/boss-message-library/core/domain/event"
+	"falabella.com/boss-message-library/domain/event"
 	"testing"
 )
 
@@ -25,14 +25,22 @@ func TestNotifyOrderStatusEvent(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
+
 		t.Run(tt.name, func(t *testing.T) {
-			rs := &HistoricalEventPublisher{
+			rs := &eventPublisher{
 				topic: tt.topic,
 			}
-			publisher = func(t *pubsub.Topic, s interface{}, attributes map[string]string) error {
+			publish = func(t *pubsub.Topic, s interface{}, attributes map[string]string) error {
 				return nil
 			}
-			err := rs.Publish(tt.args.event, "", "", "")
+
+			var headers = make(map[string]string)
+			headers["country"] = ""
+			headers["sourceSystem"] = ""
+			headers["tenantId"] = ""
+			headers["version"] = "1.0"
+
+			err := rs.Publish(tt.args.event, headers)
 			if nil != err {
 				t.Errorf("error when try to notify AuditOrder")
 				return
@@ -45,7 +53,7 @@ func TestNewOrderStatusPublisher(t *testing.T) {
 
 	tests := []struct {
 		name    string
-		notWant *HistoricalEventPublisher
+		notWant *eventPublisher
 	}{
 		{
 			"#1 new order status publisher success",
@@ -54,7 +62,7 @@ func TestNewOrderStatusPublisher(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := NewHistoricalEventPublisher(); got == tt.notWant {
+			if got := NewEventPublisher(); got == tt.notWant {
 				t.Errorf("NewOrderStatusPublisher() = %v, want %v", got, tt.notWant)
 			}
 		})

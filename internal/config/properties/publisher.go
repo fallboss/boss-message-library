@@ -4,7 +4,7 @@ import "sync"
 
 var (
 	publisherPropsInstanceOnce sync.Once
-	publisherPropsInstance *PublisherProp
+	publisherPropsInstance     *PublisherProp
 )
 
 func GetPublisherProperty() *PublisherProp {
@@ -21,7 +21,7 @@ type PublisherProp struct {
 }
 
 type Publisher struct {
-	OrderStatus PubInfo `yaml:"historical-event"`
+	HistoricalEvent PubInfo `yaml:"historical-event"`
 }
 
 type PubInfo struct {

@@ -1,7 +1,7 @@
 package publisher
 
 import (
-	"falabella.com/boss-message-library/infra/secundary/formatter"
+	"falabella.com/boss-message-library/internal/formatter"
 	"github.com/google/uuid"
 )
 
