@@ -4,8 +4,8 @@ import (
 	"cloud.google.com/go/pubsub"
 	"context"
 	"encoding/json"
-	"falabella.com/boss-message-library/internal/config/log"
 	"fmt"
+	"github.com/fallboss/boss-message-library/internal/config/log"
 	"sync"
 )
 

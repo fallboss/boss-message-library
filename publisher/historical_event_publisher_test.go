@@ -2,7 +2,7 @@ package publisher
 
 import (
 	"cloud.google.com/go/pubsub"
-	"falabella.com/boss-message-library/domain/event"
+	"github.com/fallboss/boss-message-library/domain/event"
 	"testing"
 )
 

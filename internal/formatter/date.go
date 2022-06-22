@@ -1,7 +1,7 @@
 package formatter
 
 import (
-	"falabella.com/boss-message-library/internal/config/log"
+	"github.com/fallboss/boss-message-library/internal/config/log"
 	"strconv"
 	"strings"
 	"time"

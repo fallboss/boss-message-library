@@ -1,7 +1,7 @@
 package properties
 
 import (
-	"falabella.com/boss-message-library/publisher"
+	"github.com/fallboss/boss-message-library/publisher"
 	"reflect"
 	"testing"
 )
