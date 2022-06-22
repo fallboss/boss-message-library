@@ -21,3 +21,5 @@ falabella-boss-message-go-library/.idea
 # Go workspace file
 go.work
 go.sum
+
+.idea/

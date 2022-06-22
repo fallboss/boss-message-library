@@ -2,9 +2,9 @@ package publisher
 
 import (
 	"cloud.google.com/go/pubsub"
-	"falabella.com/boss-message-library/domain/event"
-	"falabella.com/boss-message-library/internal/config/log"
-	"falabella.com/boss-message-library/internal/publisher"
+	"github.com/fallboss/boss-message-library/domain/event"
+	"github.com/fallboss/boss-message-library/internal/config/log"
+	publisher "github.com/fallboss/boss-message-library/internal/publisher"
 )
 
 var publish = publisher.Publish
