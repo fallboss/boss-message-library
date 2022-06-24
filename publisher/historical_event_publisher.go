@@ -24,8 +24,6 @@ func NewEventPublisher() *EventPublisher {
 	pid := GetPublisherProperty().HistoricalEvent.ProjectId
 	tid := GetPublisherProperty().HistoricalEvent.TopicId
 
-	logger.Infof("pid :", pid)
-	logger.Infof("pid :", tid)
 	return &EventPublisher{
 		topic: publisher.BuildTopic(pid, tid),
 	}
