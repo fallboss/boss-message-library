@@ -1,7 +1,6 @@
-package properties
+package publisher
 
 import (
-	"github.com/fallboss/boss-message-library/publisher"
 	"reflect"
 	"testing"
 )
@@ -9,7 +8,7 @@ import (
 func TestGetPublisherProperty(t *testing.T) {
 	tests := []struct {
 		name string
-		want *publisher.PublisherProp
+		want *PublisherProp
 	}{
 		{
 			name: "test",
@@ -18,7 +17,7 @@ func TestGetPublisherProperty(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := publisher.GetPublisherProperty(); reflect.DeepEqual(got, tt.want) {
+			if got := GetPublisherProperty(); reflect.DeepEqual(got, tt.want) {
 				t.Errorf("GetPublisherProperty() = %v, want %v", got, tt.want)
 			}
 		})

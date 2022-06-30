@@ -1,7 +1,6 @@
 package publisher
 
 import (
-	"github.com/fallboss/boss-message-library/internal/formatter"
 	"github.com/google/uuid"
 )
 
@@ -18,8 +17,8 @@ func CompleteHeader(attributes map[string]string, eventType, entityType string) 
 	if attributes == nil {
 		attributes = make(map[string]string)
 	}
-	timeStamp := formatter.Timestamp()
-	dateTime := formatter.LocalDateTimeUTC()
+	timeStamp := Timestamp()
+	dateTime := LocalDateTimeUTC()
 	if attributes["eventId"] == "" {
 		attributes["eventId"] = uuid.NewString()
 	}

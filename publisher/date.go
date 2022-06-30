@@ -1,7 +1,6 @@
-package formatter
+package publisher
 
 import (
-	"github.com/fallboss/boss-message-library/internal/config/log"
 	"strconv"
 	"strings"
 	"time"
@@ -36,8 +35,6 @@ func GetTimeZone(country string) string {
 
 	}
 }
-
-var logger = log.GetLogger()
 
 func ParseInLocation(date string, country string) string {
 	if "" != date {

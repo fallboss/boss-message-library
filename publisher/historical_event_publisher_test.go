@@ -2,14 +2,13 @@ package publisher
 
 import (
 	"cloud.google.com/go/pubsub"
-	"github.com/fallboss/boss-message-library/domain/event"
 	"testing"
 )
 
 func TestNotifyOrderStatusEvent(t *testing.T) {
 
 	type args struct {
-		event *event.HistoricalEvent
+		event *HistoricalEvent
 	}
 	tests := []struct {
 		name  string
@@ -19,7 +18,7 @@ func TestNotifyOrderStatusEvent(t *testing.T) {
 	}{
 		{
 			"#1 notify order status event success",
-			args{new(event.HistoricalEvent)},
+			args{new(HistoricalEvent)},
 			new(pubsub.Topic),
 			0,
 		},

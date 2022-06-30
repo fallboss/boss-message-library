@@ -1,4 +1,4 @@
-package event
+package publisher
 
 import "github.com/google/uuid"
 

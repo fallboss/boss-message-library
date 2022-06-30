@@ -1,4 +1,4 @@
-package log
+package publisher
 
 import (
 	"github.com/rendis/abslog"

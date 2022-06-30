@@ -5,20 +5,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/fallboss/boss-message-library/internal/config/log"
 	"sync"
 )
 
 var (
-	ctx    = context.Background()
-	once   sync.Once
-	client *pubsub.Client
+	ctx        = context.Background()
+	clientOnce sync.Once
+	client     *pubsub.Client
 )
 
-var logger = log.GetLogger()
-
 func getClient(projectId string) *pubsub.Client {
-	once.Do(func() {
+	clientOnce.Do(func() {
 		c, err := pubsub.NewClient(ctx, projectId)
 		if err != nil {
 			logger.Fatalf("Error creating client: %v", err)
