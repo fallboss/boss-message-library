@@ -37,7 +37,9 @@ func Publish(t *pubsub.Topic, s interface{}, attributes map[string]string) error
 
 	message := pubsub.Message{Data: b, Attributes: attributes}
 
-	logger.Infof("Message to publish: %s , Header: %v to", string(message.Data), message.Attributes)
+	messageToPublish := fmt.Sprintf("'%s'", string(message.Data))
+	header := fmt.Sprintf("Header: %v", message.Attributes)
+	fmt.Printf("Message to publish: '%s' , %s to", messageToPublish, header)
 
 	result := t.Publish(ctx, &message)
 
