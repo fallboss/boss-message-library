@@ -1,12 +1,10 @@
 package publisher
 
 import (
-	"bytes"
 	"cloud.google.com/go/pubsub"
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
 	"sync"
 )
 
@@ -16,11 +14,13 @@ var (
 	client     *pubsub.Client
 )
 
+var logg = GetLogger()
+
 func getClient(projectId string) *pubsub.Client {
 	clientOnce.Do(func() {
 		c, err := pubsub.NewClient(ctx, projectId)
 		if err != nil {
-			logger.Fatalf("Error creating client: %v", err)
+			logg.Fatalf("Error creating client: %v", err)
 		}
 		client = c
 	})
@@ -39,13 +39,8 @@ func Publish(t *pubsub.Topic, s interface{}, attributes map[string]string) error
 
 	message := pubsub.Message{Data: b, Attributes: attributes}
 
-	var prettyJSON bytes.Buffer
-	err = json.Indent(&prettyJSON, message.Data, "", "\t")
-	if err != nil {
-		logger.Errorf("JSON parse error: ", err)
-	}
-	log.Println("Header to publish: ", message.Attributes)
-	log.Println("Message to publish :", string(prettyJSON.Bytes()), message.Attributes)
+	logg.Infof("Header to publish: %v", message.Attributes)
+	logg.Infof("Message to publish : %v", string(message.Data))
 
 	result := t.Publish(ctx, &message)
 
