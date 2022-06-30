@@ -1,10 +1,12 @@
 package publisher
 
 import (
+	"bytes"
 	"cloud.google.com/go/pubsub"
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"sync"
 )
 
@@ -37,9 +39,13 @@ func Publish(t *pubsub.Topic, s interface{}, attributes map[string]string) error
 
 	message := pubsub.Message{Data: b, Attributes: attributes}
 
-	messageToPublish := fmt.Sprintf("'%s'", string(message.Data))
-	header := fmt.Sprintf("Header: %v", message.Attributes)
-	fmt.Printf("Message to publish: '%s' , %s to", messageToPublish, header)
+	var prettyJSON bytes.Buffer
+	err = json.Indent(&prettyJSON, message.Data, "", "\t")
+	if err != nil {
+		logger.Errorf("JSON parse error: ", err)
+	}
+	log.Println("Header to publish: ", message.Attributes)
+	log.Println("Message to publish :", string(prettyJSON.Bytes()), message.Attributes)
 
 	result := t.Publish(ctx, &message)
 
